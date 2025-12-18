@@ -7,7 +7,12 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/test", (req: Request, res: Response) => {
-  res.send("Hello World 3");
+  let returnObj = {
+    name: "Tui",
+    age: 14,
+    address: "CAMT",
+  };
+  res.send(returnObj);
 });
 
 app.listen(port, () => {
