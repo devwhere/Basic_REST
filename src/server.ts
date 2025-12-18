@@ -7,12 +7,22 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/test", (req: Request, res: Response) => {
+  res.send("Hello World 3");
+});
+
+app.get("/test1", (req: Request, res: Response) => {
   let returnObj = {
     name: "Tui",
     age: 14,
     address: "CAMT",
   };
   res.send(returnObj);
+});
+
+app.get("/test2", (req: Request, res: Response) => {
+  const id = req.query.id;
+  const output = `id: ${id}`;
+  res.send(output);
 });
 
 app.listen(port, () => {
