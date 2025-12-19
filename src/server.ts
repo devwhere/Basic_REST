@@ -112,9 +112,25 @@ app.get("/events", (req: Request, res: Response) => {
 });
 
 app.get("/event2", (req: Request, res: Response) => {
-  const category = req.query.category;
-  const filteredEvents = events.filter((event) => event.category === category);
-  res.json(filteredEvents);
+  if (req.query.category) {
+    const category = req.query.category;
+    const filteredEvents = events.filter(
+      (event) => event.category === category
+    );
+    res.json(filteredEvents);
+  } else {
+    res.json(events);
+  }
+});
+
+app.get("/event3/:id", (req: Request, res: Response) => {
+  const id = parseInt(req.params.id);
+  const event = events.find((event) => event.id === id);
+  if (event) {
+    res.json(event);
+  } else {
+    res.status(404).send("Event not found");
+  }
 });
 
 app.listen(port, () => {
