@@ -111,6 +111,12 @@ app.get("/events", (req: Request, res: Response) => {
   res.json(events);
 });
 
+app.get("/event2", (req: Request, res: Response) => {
+  const category = req.query.category;
+  const filteredEvents = events.filter((event) => event.category === category);
+  res.json(filteredEvents);
+});
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
